@@ -22,7 +22,7 @@ jobs:
       - name: Build with Maven
         run: |
           mvn -B package --file pom.xml
-          mkdir downloads && cd target/*.jar downloads
+          mkdir downloads && cp target/*.jar downloads
       
       - name: target folder
         run: |

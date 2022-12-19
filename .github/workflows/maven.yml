@@ -9,12 +9,11 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@master
-     - name: Run Snyk to check for vulnerabilities
-       uses: snyk/actions/maven@master
-       env:
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions@0.3.0
+        env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-       with:
+        with:
          command: code test
         
   build:

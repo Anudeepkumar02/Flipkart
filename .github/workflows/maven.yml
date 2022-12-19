@@ -12,7 +12,7 @@ jobs:
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions@0.3.0
         env:
-         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+         SNYK_TOKEN: 6df2b134-4e59-4f3b-a810-1ccf9ffce27c
         with:
          command: code test
         

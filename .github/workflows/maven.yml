@@ -12,10 +12,13 @@ jobs:
       - name: checkout from current rep
         uses: actions/checkout@v3
         
+      - name: commands
+        run: |
+         snyk auth: 6df2b134-4e59-4f3b-a810-1ccf9ffce27c
+        
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
-        env:
-         SYNK_TOKEN: $ {{ secrets.SYNK_TOKEN }}
+        
         
         
   build:

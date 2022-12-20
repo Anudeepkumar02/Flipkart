@@ -10,11 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions@0.3.0
+        uses: snyk/actions/maven@master
         env:
-         SNYK_TOKEN: 6df2b134-4e59-4f3b-a810-1ccf9ffce27c
-        with:
-          command: code test
+         SYNK_TOKEN: $ {{ secrets.SYNK_TOKEN }}
+        
         
   build:
 

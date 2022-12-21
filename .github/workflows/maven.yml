@@ -14,7 +14,7 @@ jobs:
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
         env:
-         SYNK_TOKEN: ${{ SYNK_TOKEN }}
+         SNYK_TOKEN: ${{ SNYK_TOKEN }}
         
         
   build:

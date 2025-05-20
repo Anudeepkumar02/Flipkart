@@ -1,54 +1,15 @@
-name: Java CI with Maven
+name: Trigger Bisleri Repo Workflow
 
 on:
   workflow_dispatch:
 
- 
 jobs:
-  security:
+  trigger-workflow:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout from current rep
-        uses: actions/checkout@v3
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/maven@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        
-        
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout master branch from github
-        uses: actions/checkout@v3
-      
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-         
-      - name: Build with Maven
+      - name: Trigger Bisleri Repository Workflow
         run: |
-          mvn -B package --file pom.xml
-          mkdir downloads && cp target/*.war downloads
-      
-      - name: target folder
-        run: |
-          cd target
-          ls -a
-          
-      - name: Download the Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: upload artifacts with github actions
-          path: downloads
-            
-          
-          
-          
-        
-
-
+          curl -X POST -H "Accept: application/vnd.github.everest-preview+json" \
+               -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+               --data '{"event_type":"trigger-event"}' \
+               https://api.github.com/repos/Anudeepkumar02/Bisleri/dispatches
